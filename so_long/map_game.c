@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:05:31 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/19 15:26:56 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/20 20:45:24 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ void	get_game(char *av, t_game *my_game)
 void	ft_putmap(t_game *my_game, void *img, int j, int i)
 {
 	mlx_put_image_to_window(my_game->mlx, my_game->win, img, j * 32, i * 32);
+}
+
+void	ft_putmap_player(t_game *my_game, void *img, int j, int i)
+{
+	my_game->x_player = j;
+	my_game->y_player = i;
+	ft_putmap(my_game, img, j, i);
 }
 
 int	check_ifclosed(t_game *my_game)
@@ -103,6 +110,7 @@ int	check_map(t_game *my_game)
 			if (my_game->map[i][j] == 'C')
 			{
 				c = 1;
+				my_game->gg = 1;
 				break;
 			}
 			j++;
@@ -124,7 +132,7 @@ int	check_map(t_game *my_game)
 		}
 		i++;
 	}
-	if (!p || !c || !e)
+	if (!p || !my_game->gg || !e)
 		return (0);
 	if (my_game->map_h == my_game->map_w)
 		return (0);
@@ -133,7 +141,7 @@ int	check_map(t_game *my_game)
 	return (1);
 }
 
-void	map_game(t_game *my_game)
+int	map_game(t_game *my_game)
 {
 	int	i;
 	int	j;
@@ -154,7 +162,7 @@ void	map_game(t_game *my_game)
 			else if (my_game->map[i][j] == '1')
 				ft_putmap(my_game, my_game->wall, j, i);
 			else if (my_game->map[i][j] == 'P')
-				ft_putmap(my_game, my_game->player, j, i);
+				ft_putmap_player(my_game, my_game->player, j, i);
 			else if (my_game->map[i][j] == 'C')
 				ft_putmap(my_game, my_game->collect, j, i);
 			else if (my_game->map[i][j] == 'E')
@@ -168,4 +176,5 @@ void	map_game(t_game *my_game)
 		}
 		i++;
 	}
+	return (1);
 }

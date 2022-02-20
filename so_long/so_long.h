@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 20:42:14 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/19 17:55:36 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/20 20:44:56 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "mlx/mlx.h"
 # include "utils/gnl/get_next_line.h"
 
-
+# define ON_DESTROY 97
 
 typedef struct s_game
 {
@@ -40,6 +40,7 @@ typedef struct s_game
 	//////////// player
 	int		x_player;
 	int		y_player;
+	int		gg;
 }	t_game;
 
 //// -------------- keys
@@ -47,11 +48,14 @@ typedef struct s_game
 
 //// -------------- map
 void	get_game(char *av, t_game *my_game);
-void	map_game(t_game *my_game);
+int		map_game(t_game *my_game);
 void	game_img(t_game *my_game);
 
 //// -------------- game_play
 void	play_game(t_game *my_game);
+
+//// -------------- player
+void	player_game(int key, t_game *my_game);
 
 //// -------------- utils
 char	**ft_split(char *s, char c);

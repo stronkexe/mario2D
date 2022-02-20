@@ -6,7 +6,7 @@
 #    By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 18:47:14 by ael-asri          #+#    #+#              #
-#    Updated: 2022/02/19 16:21:29 by ael-asri         ###   ########.fr        #
+#    Updated: 2022/02/20 12:19:08 by ael-asri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC = so_long.c\
 		map_game.c\
 		img_game.c\
 		play_game.c\
+		player_game.c\
 		utils/gnl/get_next_line.c\
 		utils/gnl/get_next_line_utils.c\
 		utils/ft_split.c\
@@ -40,7 +41,7 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-		rm -f $(NAME)
+	rm -f $(NAME)
 
 re : fclean all
 
