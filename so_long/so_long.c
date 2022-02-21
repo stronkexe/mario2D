@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 18:44:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/19 16:38:03 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/21 12:35:08 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ int	main(int ac, char **av)
 		game_img(&my_game);
 		map_game(&my_game);
 		play_game(&my_game);
-		printf("hh\n");
 		mlx_loop(my_game.mlx);
 	}
 	else
-		write(1, "bruuh\n", 6);
+		write(1, "Invalid number of aeguments\n", ft_strlen("Invalid number of aeguments\n"));
 }

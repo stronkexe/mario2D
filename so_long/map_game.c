@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:05:31 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/20 20:45:24 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/21 13:12:17 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void	get_game(char *av, t_game *my_game)
 	char	*t;
 	
 	fd = open(av, O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		exit(1);
+	printf("hhhh\n");
 	temp = ft_strdup("");
 	while (1)
 	{
@@ -77,15 +78,16 @@ int	check_ifclosed(t_game *my_game)
 }
 int	check_map(t_game *my_game)
 {
+	my_game->nb_collect = 0;
 	int	i;
 	int	j;
 	int	p;
-	int	c;
+//	int	c;
 	int	e;
 
 	i = 0;
 	p = 0;
-	c = 0;
+//	c = 0;
 	e = 0;
 	while (my_game->map[i])
 	{
@@ -109,9 +111,9 @@ int	check_map(t_game *my_game)
 		{
 			if (my_game->map[i][j] == 'C')
 			{
-				c = 1;
+				my_game->nb_collect++;
 				my_game->gg = 1;
-				break;
+			//	break;
 			}
 			j++;
 		}
@@ -125,14 +127,15 @@ int	check_map(t_game *my_game)
 		{
 			if (my_game->map[i][j] == 'E')
 			{
-				e = 1;
-				break;
+				e++;
+			//	break;
 			}
 			j++;
 		}
 		i++;
 	}
-	if (!p || !my_game->gg || !e)
+	printf("nb collect %d\n", my_game->nb_collect);
+	if (!p || !my_game->gg || !e || e > 1)
 		return (0);
 	if (my_game->map_h == my_game->map_w)
 		return (0);

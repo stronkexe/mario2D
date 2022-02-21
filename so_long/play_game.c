@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 16:13:41 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/20 20:06:27 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/21 11:58:11 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,4 @@ void	play_game(t_game *my_game)
 {
 	mlx_hook(my_game->win, 2, 1L<<12, key_val, my_game);
 	mlx_hook(my_game->win, 9, 1L<<21, map_game, my_game);
-	mlx_loop(my_game->mlx);
 }

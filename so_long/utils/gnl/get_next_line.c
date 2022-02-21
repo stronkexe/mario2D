@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:11:47 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/17 21:12:30 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/21 20:47:01 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,31 @@ char	*read_line(int fd, char *line)
 			return (NULL);
 		}
 		buffer[n] = '\0';
+		printf("buffer %s$\n", buffer);
+	//	if (buffer[0] == '\n')
+	//		exit(1);
 		line = ft_strjoin2(line, buffer);
 	}
 	free(buffer);
+	
 	return (line);
 }
 
+# include "string.h"
+
+void	check_bn(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == '\n' && s[i+1] == '\0')
+		//	printf("yoyo\n");
+			exit(1);
+		i++;
+	}
+}
 char	*get_next_line(int fd)
 {
 	static char		*line;
@@ -83,8 +102,16 @@ char	*get_next_line(int fd)
 	if (line == NULL)
 		return (NULL);
 	buffer = get_line(&line);
+//	check_bn(buffer);
+	// if (!strncmp(buffer, "\n", 1))
+	// {
+	// 	write(2, "no buddy\n", 9);
+	// 	exit(1);
+	// }
 	if (buffer == NULL)
 		return (NULL);
 	line = get_chyata(line);
+	
+	printf("buffer %s$\n", buffer);
 	return (buffer);
 }

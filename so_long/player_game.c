@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:33:39 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/20 20:54:56 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/21 12:21:22 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,28 @@ void	move_player_up(t_game *my_game)
 	}
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'C')
 	{
+		my_game->nb_collect--;
+		if (my_game->nb_collect == 0)
+		{
+			printf("nb collect %d\n", my_game->nb_collect);
+			mlx_destroy_image(my_game->mlx, my_game->exit);
+			my_game->exit = mlx_xpm_file_to_image(my_game->mlx, "imgs/exit2.xpm", &my_game->img_w, &my_game->img_h);
+		//	mlx_clear_window(my_game->mlx, my_game->win);
+		}
 		mlx_destroy_image(my_game->mlx, my_game->player);
-		mlx_destroy_image(my_game->mlx, my_game->collect);
+	//	mlx_destroy_image(my_game->mlx, my_game->collect);
 		my_game->player = mlx_xpm_file_to_image(my_game->mlx, "imgs/mario.xpm", &my_game->img_w, &my_game->img_h);
 	//	mlx_clear_window(my_game->mlx, my_game->win);
 		my_game->map[my_game->y_player][my_game->x_player] = 'P';
 		my_game->map[my_game->y_player+1][my_game->x_player] = '0';
+		
 		my_game->gg = 1;
 		
+	}
+	else if (my_game->map[my_game->y_player][my_game->x_player] == 'E' && my_game->nb_collect == 0)
+	{
+		mlx_destroy_window(my_game->mlx, my_game->win);
+		exit(0);
 	}
 	map_game(my_game);
 	printf("hi i'm w\n");
@@ -50,13 +64,27 @@ void	move_player_down(t_game *my_game)
 	}
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'C')
 	{
+		my_game->nb_collect--;
+		if (my_game->nb_collect == 0)
+		{
+			printf("nb collect %d\n", my_game->nb_collect);
+		//	mlx_destroy_image(my_game->mlx, my_game->exit);
+			my_game->exit = mlx_xpm_file_to_image(my_game->mlx, "imgs/exit2.xpm", &my_game->img_w, &my_game->img_h);
+		//	mlx_clear_window(my_game->mlx, my_game->win);
+		}
 		mlx_destroy_image(my_game->mlx, my_game->player);
-		mlx_destroy_image(my_game->mlx, my_game->collect);
+	//	mlx_destroy_image(my_game->mlx, my_game->collect);
 		my_game->player = mlx_xpm_file_to_image(my_game->mlx, "imgs/realmario2.xpm", &my_game->img_w, &my_game->img_h);
 	//	mlx_clear_window(my_game->mlx, my_game->win);
 		my_game->map[my_game->y_player][my_game->x_player] = 'P';
 		my_game->map[my_game->y_player-1][my_game->x_player] = '0';
+		
 		my_game->gg = 1;
+	}
+	else if (my_game->map[my_game->y_player][my_game->x_player] == 'E' && my_game->nb_collect == 0)
+	{
+		mlx_destroy_window(my_game->mlx, my_game->win);
+		exit(0);
 	}
 	
 	map_game(my_game);
@@ -75,14 +103,28 @@ void	move_player_right(t_game *my_game)
 	}
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'C')
 	{
+		my_game->nb_collect--;
+		if (my_game->nb_collect == 0)
+		{
+			printf("nb collect %d\n", my_game->nb_collect);
+			mlx_destroy_image(my_game->mlx, my_game->exit);
+			my_game->exit = mlx_xpm_file_to_image(my_game->mlx, "imgs/exit2.xpm", &my_game->img_w, &my_game->img_h);
+		//	mlx_clear_window(my_game->mlx, my_game->win);
+		}
 		mlx_destroy_image(my_game->mlx, my_game->player);
-		mlx_destroy_image(my_game->mlx, my_game->collect);
+	//	mlx_destroy_image(my_game->mlx, my_game->collect);
 		my_game->player = mlx_xpm_file_to_image(my_game->mlx, "imgs/mario.xpm", &my_game->img_w, &my_game->img_h);
 	//	mlx_clear_window(my_game->mlx, my_game->win);
 		printf("im collect\n");
 		my_game->map[my_game->y_player][my_game->x_player] = 'P';
 		my_game->map[my_game->y_player][my_game->x_player-1] = '0';
+		
 		my_game->gg = 1;
+	}
+	else if (my_game->map[my_game->y_player][my_game->x_player] == 'E' && my_game->nb_collect == 0)
+	{
+		mlx_destroy_window(my_game->mlx, my_game->win);
+		exit(0);
 	}
 	map_game(my_game);
 	printf("hi i'm d\n");
@@ -100,13 +142,29 @@ void	move_player_left(t_game *my_game)
 	}
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'C')
 	{
+		
+		my_game->nb_collect--;
+		if (my_game->nb_collect == 0)
+		{
+			printf("yooo\n");
+			printf("nb collect %d\n", my_game->nb_collect);
+			mlx_destroy_image(my_game->mlx, my_game->exit);
+			my_game->exit = mlx_xpm_file_to_image(my_game->mlx, "imgs/exit2.xpm", &my_game->img_w, &my_game->img_h);
+		//	mlx_clear_window(my_game->mlx, my_game->win);
+		}
 		mlx_destroy_image(my_game->mlx, my_game->player);
-		mlx_destroy_image(my_game->mlx, my_game->collect);
+	//	mlx_destroy_image(my_game->mlx, my_game->collect);
 		my_game->player = mlx_xpm_file_to_image(my_game->mlx, "imgs/realmario2.xpm", &my_game->img_w, &my_game->img_h);
 	//	mlx_clear_window(my_game->mlx, my_game->win);
 		my_game->map[my_game->y_player][my_game->x_player] = 'P';
 		my_game->map[my_game->y_player][my_game->x_player+1] = '0';
+		
 		my_game->gg = 1;
+	}
+	else if (my_game->map[my_game->y_player][my_game->x_player] == 'E' && my_game->nb_collect == 0)
+	{
+		mlx_destroy_window(my_game->mlx, my_game->win);
+		exit(0);
 	}
 	
 	map_game(my_game);
