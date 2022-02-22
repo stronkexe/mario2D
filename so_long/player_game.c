@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:33:39 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/21 12:21:22 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:14:23 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	move_player_up(t_game *my_game)
 	//	mlx_clear_window(my_game->mlx, my_game->win);
 		my_game->map[my_game->y_player][my_game->x_player] = 'P';
 		my_game->map[my_game->y_player+1][my_game->x_player] = '0';
-		
 		my_game->gg = 1;
 		
 	}

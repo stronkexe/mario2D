@@ -6,19 +6,38 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:05:31 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/21 13:12:17 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:27:27 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+
+#include "string.h"
+
+int	check_rev_file(char *s)
+{
+	int	i;
+
+	i = 0;
+	while(i < (ft_strlen(s)-4))
+		i++;
+	if (!ft_strncmp(&s[i], ".ber", 4))
+		return (1);
+	return (0);
+}
 void	get_game(char *av, t_game *my_game)
 {
 	int		fd;
 	char	*s;
 	char	*temp;
 	char	*t;
-	
+
+	if (!check_rev_file(av))
+	{
+		write(2, "nope invalid file", ft_strlen("nope invalid file"));
+		exit(1);
+	}
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
 		exit(1);
@@ -36,7 +55,11 @@ void	get_game(char *av, t_game *my_game)
 		free(s);
 		free(t);
 	}
-	my_game->map = ft_split(temp, '/');
+	
+	printf("temp \n-%s-\n", temp);
+	if (temp[0] == '\0' || temp[ft_strlen(temp)-1] == '\n')
+		exit(1);
+	my_game->map = ft_split(temp, '\n');
 	if (!my_game->map)
 		exit(1);
 	free(temp);
@@ -67,13 +90,23 @@ int	check_ifclosed(t_game *my_game)
 		i++;
 	}
 	i = 0;
-	int	h = (my_game->map_h / 32) - 1;
-	while (my_game->map[h][i])
+	int	w = (my_game->map_w / 32) - 1;
+	while (my_game->map[i])
+	{
+		if (my_game->map[i][0] != '1' || my_game->map[i][w] != '1')
+			return (0);
+		i++;
+	}
+	i = 0;
+	int	h = (my_game->map_h / 32)-1;
+	while (my_game->map[h][i] != '\0')
 	{
 		if (my_game->map[h][i] != '1')
 			return (0);
 		i++;
 	}
+	if (my_game->map[h][i] == '\n')
+		return (0);
 	return (1);
 }
 int	check_map(t_game *my_game)

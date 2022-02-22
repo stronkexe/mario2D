@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:11:47 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/21 20:47:01 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:31:24 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*get_line(char	**line)
 	}
 	while (line[0][i] != '\n' && line[0][i] != '\0')
 		i++;
-	temp = ft_substr2(*line, 0, i);
+	temp = ft_substr2(*line, 0, i+1);
 	return (temp);
 }
 
@@ -66,7 +66,7 @@ char	*read_line(int fd, char *line)
 			return (NULL);
 		}
 		buffer[n] = '\0';
-		printf("buffer %s$\n", buffer);
+	//	printf("buffer %s$\n", buffer);
 	//	if (buffer[0] == '\n')
 	//		exit(1);
 		line = ft_strjoin2(line, buffer);
@@ -76,8 +76,6 @@ char	*read_line(int fd, char *line)
 	return (line);
 }
 
-# include "string.h"
-
 void	check_bn(char *s)
 {
 	int	i;
@@ -86,8 +84,8 @@ void	check_bn(char *s)
 	while (s[i] != '\0')
 	{
 		if (s[i] == '\n' && s[i+1] == '\0')
-		//	printf("yoyo\n");
-			exit(1);
+			printf("yoyo\n");
+		//	exit(1);
 		i++;
 	}
 }
@@ -102,16 +100,18 @@ char	*get_next_line(int fd)
 	if (line == NULL)
 		return (NULL);
 	buffer = get_line(&line);
+//	printf("buffer [0] %c$\n", buffer[0]);
 //	check_bn(buffer);
-	// if (!strncmp(buffer, "\n", 1))
-	// {
-	// 	write(2, "no buddy\n", 9);
-	// 	exit(1);
-	// }
+	
 	if (buffer == NULL)
 		return (NULL);
 	line = get_chyata(line);
 	
 	printf("buffer %s$\n", buffer);
+	if (buffer[0] == '\n')
+	{
+	 	write(2, "no buddy\n", 9);
+	 	exit(1);
+	}
 	return (buffer);
 }
