@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_game.c                                         :+:      :+:    :+:   */
+/*   img_game_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 21:42:12 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/24 13:59:55 by ael-asri         ###   ########.fr       */
+/*   Created: 2022/02/24 16:33:20 by ael-asri          #+#    #+#             */
+/*   Updated: 2022/02/24 19:42:35 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	game_img(t_game *my_game)
 {
@@ -22,10 +22,12 @@ void	game_img(t_game *my_game)
 			"imgs/m1.xpm", &my_game->img_w, &my_game->img_h);
 	my_game->collect = mlx_xpm_file_to_image(my_game->mlx,
 			"imgs/c1.xpm", &my_game->img_w, &my_game->img_h);
+	my_game->enemy = mlx_xpm_file_to_image(my_game->mlx,
+			"imgs/enemy1.xpm", &my_game->img_w, &my_game->img_h);
 	my_game->exit = mlx_xpm_file_to_image(my_game->mlx,
 			"imgs/exit1.xpm", &my_game->img_w, &my_game->img_h);
 	if (!my_game->background || !my_game->wall || !my_game->player
-		|| !my_game->collect || !my_game->exit)
+		|| !my_game->collect || !my_game->enemy || !my_game->exit)
 	{
 		ft_putstr_error_exit("invalid image\n");
 	}

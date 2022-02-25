@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_game.c                                         :+:      :+:    :+:   */
+/*   map_game_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 21:05:31 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/24 16:13:54 by ael-asri         ###   ########.fr       */
+/*   Created: 2022/02/24 16:33:25 by ael-asri          #+#    #+#             */
+/*   Updated: 2022/02/25 18:36:36 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	ft_putmap(t_game *my_game, void *img, int j, int i)
 {
@@ -26,9 +26,11 @@ void	ft_putmap_player(t_game *my_game, void *img, int j, int i)
 
 void	print_moves(t_game *my_game)
 {
-	ft_putstr("Moves: ");
-	ft_putnbr(my_game->moves);
-	ft_putchar('\n');
+	char	*n;
+
+	mlx_string_put(my_game->mlx, my_game->win, 32, 35, 0x000, "Moves: \n");
+	n = ft_itoa(my_game->moves);
+	mlx_string_put(my_game->mlx, my_game->win, 100, 35, 0x000, n);
 }
 
 void	get_character(t_game *my_game)
@@ -50,6 +52,8 @@ void	get_character(t_game *my_game)
 				ft_putmap_player(my_game, my_game->player, j, i);
 			else if (my_game->map[i][j] == 'C')
 				ft_putmap(my_game, my_game->collect, j, i);
+			else if (my_game->map[i][j] == 'N')
+				ft_putmap(my_game, my_game->enemy, j, i);
 			else if (my_game->map[i][j] == 'E')
 				ft_putmap(my_game, my_game->exit, j, i);
 			else

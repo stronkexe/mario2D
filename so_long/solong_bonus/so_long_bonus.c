@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 18:44:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/25 13:05:40 by ael-asri         ###   ########.fr       */
+/*   Created: 2022/02/24 13:38:39 by ael-asri          #+#    #+#             */
+/*   Updated: 2022/02/25 12:41:39 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	window_game(t_game *my_game)
 {
@@ -29,8 +29,10 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		my_game.moves = 0;
 		my_game.mlx = mlx_init();
+		my_game.moves = 1;
+		my_game.frame = 1;
+		my_game.loop = 0;
 		get_game(av[1], &my_game);
 		window_game(&my_game);
 		my_game.win = mlx_new_window(my_game.mlx,

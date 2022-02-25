@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:11:47 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/22 14:31:24 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/24 16:22:09 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*get_line(char	**line)
 	}
 	while (line[0][i] != '\n' && line[0][i] != '\0')
 		i++;
-	temp = ft_substr2(*line, 0, i+1);
+	temp = ft_substr2(*line, 0, i + 1);
 	return (temp);
 }
 
@@ -66,29 +66,12 @@ char	*read_line(int fd, char *line)
 			return (NULL);
 		}
 		buffer[n] = '\0';
-	//	printf("buffer %s$\n", buffer);
-	//	if (buffer[0] == '\n')
-	//		exit(1);
 		line = ft_strjoin2(line, buffer);
 	}
 	free(buffer);
-	
 	return (line);
 }
 
-void	check_bn(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == '\n' && s[i+1] == '\0')
-			printf("yoyo\n");
-		//	exit(1);
-		i++;
-	}
-}
 char	*get_next_line(int fd)
 {
 	static char		*line;
@@ -100,18 +83,10 @@ char	*get_next_line(int fd)
 	if (line == NULL)
 		return (NULL);
 	buffer = get_line(&line);
-//	printf("buffer [0] %c$\n", buffer[0]);
-//	check_bn(buffer);
-	
 	if (buffer == NULL)
 		return (NULL);
 	line = get_chyata(line);
-	
-	printf("buffer %s$\n", buffer);
 	if (buffer[0] == '\n')
-	{
-	 	write(2, "no buddy\n", 9);
-	 	exit(1);
-	}
+		ft_putstr_error_exit("invalid map\n");
 	return (buffer);
 }

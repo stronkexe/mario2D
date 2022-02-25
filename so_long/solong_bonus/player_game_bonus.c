@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_game.c                                      :+:      :+:    :+:   */
+/*   player_game_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/19 15:33:39 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/24 15:16:08 by ael-asri         ###   ########.fr       */
+/*   Created: 2022/02/24 16:33:43 by ael-asri          #+#    #+#             */
+/*   Updated: 2022/02/24 19:41:49 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	move_player_up(t_game *my_game)
 {
@@ -35,6 +35,8 @@ void	move_player_up(t_game *my_game)
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'E'
 		&& my_game->nb_collect == 0)
 		destroy_window(my_game);
+	else if (my_game->map[my_game->y_player][my_game->x_player] == 'N')
+		exit(0);
 	map_game(my_game);
 }
 
@@ -61,6 +63,8 @@ void	move_player_down(t_game *my_game)
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'E'
 			&& my_game->nb_collect == 0)
 		destroy_window(my_game);
+	else if (my_game->map[my_game->y_player][my_game->x_player] == 'N')
+		exit(0);
 	map_game(my_game);
 }
 
@@ -87,6 +91,8 @@ void	move_player_right(t_game *my_game)
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'E'
 			&& my_game->nb_collect == 0)
 		destroy_window(my_game);
+	else if (my_game->map[my_game->y_player][my_game->x_player] == 'N')
+		exit(0);
 	map_game(my_game);
 }
 
@@ -113,6 +119,8 @@ void	move_player_left(t_game *my_game)
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'E'
 			&& my_game->nb_collect == 0)
 		destroy_window(my_game);
+	else if (my_game->map[my_game->y_player][my_game->x_player] == 'N')
+		exit(0);
 	map_game(my_game);
 }
 
