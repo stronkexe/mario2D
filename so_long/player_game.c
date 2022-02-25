@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:33:39 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/24 15:16:08 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/25 20:23:23 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	move_player_up(t_game *my_game)
 {
+	my_game->player = mlx_xpm_file_to_image(my_game->mlx,
+			"imgs/m1.xpm", &my_game->img_w, &my_game->img_h);
 	if (my_game->map[my_game->y_player][my_game->x_player] == '0')
 		mv_player_w(my_game);
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'C')
@@ -40,6 +42,8 @@ void	move_player_up(t_game *my_game)
 
 void	move_player_down(t_game *my_game)
 {
+	my_game->player = mlx_xpm_file_to_image(my_game->mlx, "imgs/m2.xpm",
+			&my_game->img_w, &my_game->img_h);
 	if (my_game->map[my_game->y_player][my_game->x_player] == '0')
 		mv_player_s(my_game);
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'C')
@@ -66,6 +70,8 @@ void	move_player_down(t_game *my_game)
 
 void	move_player_right(t_game *my_game)
 {
+	my_game->player = mlx_xpm_file_to_image(my_game->mlx,
+			"imgs/m1.xpm", &my_game->img_w, &my_game->img_h);
 	if (my_game->map[my_game->y_player][my_game->x_player] == '0')
 		mv_player_d(my_game);
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'C')
@@ -92,6 +98,8 @@ void	move_player_right(t_game *my_game)
 
 void	move_player_left(t_game *my_game)
 {
+	my_game->player = mlx_xpm_file_to_image(my_game->mlx,
+			"imgs/m2.xpm", &my_game->img_w, &my_game->img_h);
 	if (my_game->map[my_game->y_player][my_game->x_player] == '0')
 		mv_player_a(my_game);
 	else if (my_game->map[my_game->y_player][my_game->x_player] == 'C')

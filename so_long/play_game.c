@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 16:13:41 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/25 18:39:47 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/25 20:14:46 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ int	key_val(int key, t_game *my_game)
 void	play_game(t_game *my_game)
 {
 	mlx_hook(my_game->win, 2, 1L << 12, key_val, my_game);
-//	system("leaks so_long");
 }

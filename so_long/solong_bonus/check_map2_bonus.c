@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_bonus2.c                                 :+:      :+:    :+:   */
+/*   check_map2_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:33:07 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/24 16:37:58 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/25 20:07:02 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+int	check_rev_file(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (i < (ft_strlen(s) - 4))
+		i++;
+	if (!ft_strncmp(&s[i], ".ber", 4))
+		return (1);
+	return (0);
+}
 
 int	check_top_map(t_game *my_game)
 {

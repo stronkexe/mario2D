@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:33:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/25 18:50:30 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/25 20:20:13 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,8 @@ int	key_val(int key, t_game *my_game)
 	return (1);
 }
 
-int	some_animation(t_game *my_game)
+void	frames_animation(t_game *my_game)
 {
-	if (my_game->loop < 1000)
-	{
-		my_game->loop++;
-		printf("loop %d\n", my_game->loop);
-		return (0);
-	}
-	my_game->loop = 0;
 	if (my_game->frame == 1)
 	{
 		my_game->collect = mlx_xpm_file_to_image(my_game->mlx,
@@ -51,7 +44,11 @@ int	some_animation(t_game *my_game)
 		my_game->collect = mlx_xpm_file_to_image(my_game->mlx,
 				"imgs/c3.xpm", &my_game->img_w, &my_game->img_h);
 	}
-	else if (my_game->frame == 4)
+}
+
+void	frames_animation2(t_game *my_game)
+{
+	if (my_game->frame == 4)
 	{
 		my_game->collect = mlx_xpm_file_to_image(my_game->mlx,
 				"imgs/c4.xpm", &my_game->img_w, &my_game->img_h);
@@ -67,6 +64,18 @@ int	some_animation(t_game *my_game)
 				"imgs/c6.xpm", &my_game->img_w, &my_game->img_h);
 		my_game->frame = 0;
 	}
+}
+
+int	some_animation(t_game *my_game)
+{
+	if (my_game->loop < 1000)
+	{
+		my_game->loop++;
+		return (0);
+	}
+	my_game->loop = 0;
+	frames_animation(my_game);
+	frames_animation2(my_game);
 	if (!my_game->collect)
 		ft_putstr_error_exit("invalid image\n");
 	map_game(my_game);

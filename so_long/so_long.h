@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 20:42:14 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/25 12:50:39 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/25 20:05:56 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	mv_player_w(t_game *my_game);
 void	mv_player_s(t_game *my_game);
 void	mv_player_d(t_game *my_game);
 void	mv_player_a(t_game *my_game);
+
 //// -------------- utils
 char	**ft_split(char *s, char c);
 int		ft_strlen(char *s);
@@ -75,4 +76,6 @@ void	ft_putnbr(int n);
 void	ft_putchar(char c);
 char	*ft_itoa(int n);
 
+//// ----------------- bonus
+void	print_moves(t_game *my_game);
 #endif
