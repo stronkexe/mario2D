@@ -6,11 +6,16 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:33:20 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/25 20:05:34 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/26 17:01:54 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+int	leave_game(void)
+{
+	exit(1);
+}
 
 void	print_moves(t_game *my_game)
 {
@@ -19,6 +24,7 @@ void	print_moves(t_game *my_game)
 	mlx_string_put(my_game->mlx, my_game->win, 32, 35, 0x000, "Moves: \n");
 	n = ft_itoa(my_game->moves);
 	mlx_string_put(my_game->mlx, my_game->win, 100, 35, 0x000, n);
+	free(n);
 }
 
 void	game_img(t_game *my_game)

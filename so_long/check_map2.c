@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:46:44 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/24 16:21:31 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/26 12:28:34 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int	check_ifclosed(t_game *my_game)
 	w = (my_game->map_w / 32) - 1;
 	while (my_game->map[i])
 	{
-		if (my_game->map[i][0] != '1' || my_game->map[i][w] != '1')
+		if (my_game->map[i][0] != '1' || my_game->map[i][w] != '1'
+			|| ft_strlen(my_game->map[i]) != w + 1)
 			return (0);
 		i++;
 	}

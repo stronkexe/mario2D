@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 14:05:10 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/24 16:16:01 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/26 14:11:15 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,17 @@ void	ft_putnbr(int n)
 		ft_putnbr(i / 10);
 	}
 	ft_putchar((i % 10) + '0');
+}
+
+void	free_map(t_game *my_game)
+{
+	int	i;
+
+	i = 0;
+	while (my_game->map[i] != NULL)
+	{
+		free(my_game->map[i]);
+		i++;
+	}
+	free(my_game->map);
 }

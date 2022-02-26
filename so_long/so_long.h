@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 20:42:14 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/25 20:05:56 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/26 17:00:05 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "stdio.h"
 # include "fcntl.h"
 
-# include "mlx/mlx.h"
+# include <mlx.h>
 # include "utils/gnl/get_next_line.h"
 
 typedef struct s_game
@@ -75,7 +75,10 @@ void	ft_putstr_error_exit(char *s);
 void	ft_putnbr(int n);
 void	ft_putchar(char c);
 char	*ft_itoa(int n);
+void	free_map(t_game *my_game);
 
 //// ----------------- bonus
 void	print_moves(t_game *my_game);
+int		leave_game(void);
+
 #endif

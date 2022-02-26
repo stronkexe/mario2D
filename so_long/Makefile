@@ -6,7 +6,7 @@
 #    By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 18:47:14 by ael-asri          #+#    #+#              #
-#    Updated: 2022/02/25 12:51:04 by ael-asri         ###   ########.fr        #
+#    Updated: 2022/02/26 13:15:00 by ael-asri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,23 +53,20 @@ CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-#$(NAME) : $(OBJ)
-#		cc $(CFLAGS) -Imlx $^ -o $@
-
 $(NAME): $(OBJ)
-	cc $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	cc $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 $(BNAME): $(BOBJ)
-	cc $(BOBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(BNAME)
+	cc $(BOBJ) -lmlx -framework OpenGL -framework AppKit -o $(BNAME)
 
 %.o: %.c
 	cc -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(BOBJ)
+		rm -f $(OBJ) $(BOBJ)
 
 fclean: clean
-	rm -f $(NAME) $(BNAME)
+		rm -f $(NAME) $(BNAME)
 
 re : fclean all
 

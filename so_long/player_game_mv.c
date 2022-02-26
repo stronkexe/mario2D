@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:14:41 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/24 15:16:02 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/26 14:11:48 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	destroy_window(t_game *my_game)
 {
+	print_moves(my_game);
 	mlx_destroy_window(my_game->mlx, my_game->win);
+	free_map(my_game);
+	free(my_game->mlx);
 	exit(0);
 }
 

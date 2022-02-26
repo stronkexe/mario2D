@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:32:56 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/25 20:07:55 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/26 13:50:59 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,7 @@ int	check_map(t_game *my_game)
 	e = check_exit(my_game);
 	n = check_enemy(my_game);
 	check_collect(my_game);
-	if (p != 1 || !my_game->gg || e != 1 || n < 1)
-		return (0);
-	if (my_game->map_h == my_game->map_w)
+	if (p != 1 || !my_game->gg || e < 1 || n < 1)
 		return (0);
 	if (!check_ifclosed(my_game))
 		return (0);

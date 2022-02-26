@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:33:12 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/02/24 18:36:56 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/02/26 12:32:52 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*getmaplines(char *s, int fd)
 		free(s);
 		free(t);
 	}
+	if (temp[0] == 0)
+		ft_putstr_error_exit("invalid map\n");
 	return (temp);
 }
 
@@ -50,6 +52,8 @@ void	get_game(char *av, t_game *my_game)
 	temp = getmaplines(s, fd);
 	if (!temp)
 		exit(1);
+	if (temp[ft_strlen(temp) - 1] == '\n')
+		ft_putstr_error_exit("invalid map\n");
 	my_game->map = ft_split(temp, '\n');
 	if (!my_game->map)
 		exit(1);
